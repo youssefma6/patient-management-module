@@ -1,0 +1,240 @@
+:root {
+    --primary-color: #00B8A9;
+    --secondary-color: #F8F9FA;
+    --text-color: #2D3748;
+    --border-color: #E2E8F0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+/* Sidebar Styling */
+.main-sidebar {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.brand-link {
+    border-bottom: none !important;
+    padding: 1.5rem 1rem;
+}
+
+.brand-text {
+    color: white;
+    font-weight: 600;
+}
+
+.nav-sidebar .nav-link {
+    color: white !important;
+    padding: 0.75rem 1rem;
+    margin: 0.25rem 0;
+}
+
+.nav-sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Content Area */
+.content-wrapper {
+    background-color: var(--secondary-color);
+}
+
+.content-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Search Box */
+.search-box {
+    position: relative;
+    width: 300px;
+}
+
+.search-box input {
+    padding-left: 2.5rem;
+    border-radius: 8px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+}
+
+/* Table Styling */
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: #718096;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+.table td {
+    vertical-align: middle;
+    padding: 1rem;
+}
+
+.patient-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.btn-edit, .btn-delete {
+    padding: 0.25rem 1rem;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+}
+
+.btn-edit {
+    background-color: #FED7D7;
+    color: #E53E3E;
+    border: none;
+}
+
+.btn-delete {
+    background-color: #F56565;
+    color: white;
+    border: none;
+}
+
+/* Stats Cards */
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.stat-icon i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.stat-info h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.stat-info p {
+    margin: 0;
+    color: #718096;
+}
+
+/* Doctor Cards */
+.doctor-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.doctor-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.doctor-card h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.doctor-card p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+    font-size: 0.875rem;
+}
+
+/* Quick Action Cards */
+.quick-action-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.quick-action-card:hover {
+    transform: translateY(-4px);
+}
+
+.icon-container {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background-color: #EBF8FF;
+    color: #3182CE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.icon-container.emergency {
+    background-color: #FED7D7;
+    color: #E53E3E;
+}
+
+.icon-container.pharmacy {
+    background-color: #C6F6D5;
+    color: #38A169;
+}
+
+.icon-container i {
+    font-size: 2rem;
+}
+
+.quick-action-card h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .search-box {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .stat-card, .doctor-card, .quick-action-card {
+        margin-bottom: 1rem;
+    }
+}

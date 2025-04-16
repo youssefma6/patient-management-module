@@ -1,0 +1,7 @@
+{
+    "name": "your-username/patient-management-module",
+    "description": "Patient Management Module for MediCore Hospital",
+    "require": {
+        "smarty/smarty": "^5.4"
+    }
+}
