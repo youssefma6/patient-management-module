@@ -1,5 +1,5 @@
 :root {
-  --primary: #00B8A9;
+  --primary: #02a499;
   --secondary: #F8F9FA;
   --text-primary: #2D3748;
   --text-secondary: #718096;
@@ -10,16 +10,46 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: var(--secondary);
   color: var(--text-primary);
 }
+
 
 /* Sidebar */
 .main-sidebar {
   background: var(--primary);
   padding: 1.5rem;
   width: 280px;
+  border-radius: 16px;
+  margin: 16px;
+}
+
+.title-custom {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fafb; /* optional light background like your screenshot */
+  padding: 20px;
+  margin-top: 55px;
+  margin-bottom: 22px;
+}
+
+.title-custom .highlight {
+  color: #00b3a4; /* teal-like color */
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-top: -40px;
+}
+
+.title-custom h1 span {
+  display: block;
+  color: #2d2d2d;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-top: -40px;
+}
+
+.content-wrapper>.content {
+  padding: 0 2.5rem !important;
 }
 
 .brand-wrapper {
@@ -27,8 +57,8 @@ body {
 }
 
 .brand-logo {
-  width: 40px;
-  height: 40px;
+  /* width: 40px;
+  height: 40px; */
   margin-bottom: 1rem;
 }
 
@@ -67,21 +97,22 @@ body {
 
 /* Header Actions */
 .header-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
+       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px 13px 0px 13px;
 }
 
 .search-box {
   position: relative;
-  width: 250px;
+  /* width: 250px; */
 }
 
 .search-box input {
   width: 100%;
   padding: 0.5rem 1rem 0.5rem 2.5rem;
-  border: 1px solid var(--border);
+  /* border: 1px solid var(--border); */
+  border: 1px solid #0000003d;
   border-radius: 6px;
   font-size: 0.875rem;
   background: #fff;
@@ -143,6 +174,7 @@ body {
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
+  border: 1px solid rgb(156 156 156);
 }
 
 .table {
@@ -155,20 +187,24 @@ body {
   background: #fff;
   padding: 1rem 1.5rem;
   font-weight: 600;
-  color: var(--text-secondary);
-  font-size: 0.75rem;
+  color: #000000;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 1px solid var(--border);
+  /* border-bottom: 1px solid var(--border); */
   text-align: left;
+  /* BORDER: 1PX SOLID #00000063; */
+  border-left: none;
 }
 
 .table td {
   padding: 1rem 1.5rem;
   border-bottom: 1px solid var(--border);
-  color: var(--text-primary);
+  color: #2d3748c9;
   font-size: 0.875rem;
   vertical-align: middle;
+  border: 1px solid rgb(156 156 156);
+  border-left: none;
 }
 
 .table tbody tr:last-child td {
@@ -252,14 +288,15 @@ body {
   width: 48%;
   margin-bottom: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #0000003d;
 }
 
 .stat-icon {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: var(--primary);
-  color: white;
+  color: #4f4f4f;
+  background: #e1fffd;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -268,15 +305,17 @@ body {
 
 .stat-content h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: 600;
   line-height: 1;
+  color: #4f4f4f;
 }
 
 .stat-content p {
   margin: 0.25rem 0 0;
   color: var(--text-secondary);
-  font-size: 0.875rem;
+  font-size: 12px;
+  width: max-content;
 }
 
 /* Doctors Section */
@@ -297,18 +336,20 @@ body {
 
 .section-header h2 {
   margin: 0;
-  font-size: 1.25rem;
+  /* font-size: 1.25rem; */
+  font-size: 19px;
   font-weight: 600;
 }
 
 .doctors-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(129px, 0fr));
   gap: 1.5rem;
 }
 
 .doctor-card {
   text-align: center;
+  margin-top: 27px;
 }
 
 .doctor-avatar {
@@ -321,15 +362,17 @@ body {
 
 .doctor-card h3 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 11px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #02a499;
+  
 }
 
 .doctor-card p {
   margin: 0.25rem 0 0;
   color: var(--text-secondary);
-  font-size: 0.875rem;
+  font-size: 10px;
+  
 }
 
 /* Quick Actions */
@@ -385,6 +428,119 @@ body {
   font-weight: 600;
   line-height: 1.4;
   color: var(--text-primary);
+}
+
+/* Table Container */
+.table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+  border: 1px solid rgb(156 156 156);
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0;
+}
+
+.table th {
+  background: #fff;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  color: #A0AEC0; /* Lighter gray to match the image */
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  /* border-bottom: 1px solid var(--border); */
+  text-align: left;
+  border: 1px solid #0000003d;
+  border-left: none;
+}
+
+.table td {
+  padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    color: #2d3748c9;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    border: 1px solid rgb(156 156 156);
+    border-left: none;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none; /* No bottom border for the last row */
+}
+
+/* Patient Info (Avatar + Name) */
+.patient-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.patient-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Date Info (Date and Time Stacked) */
+.date-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-info .date {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.date-info .time {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+/* Pagination */
+.pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.pagination {
+  margin: 0;
+}
+
+.page-link {
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin: 0 0.25rem;
+}
+
+.page-item.active .page-link {
+  background: var(--primary);
+  color: white;
+}
+
+.page-item .page-link:hover {
+  background: #f1f5f9;
+  color: var(--text-primary);
+}
+
+.page-info {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
 }
 
 /* Responsive */
