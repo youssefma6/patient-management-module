@@ -1,0 +1,2 @@
+[17-Apr-2025 01:29:48 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1049): Unknown database 'medicore' in C:\xampp\htdocs\patient-management-module\api\patients.php on line 21
+[17-Apr-2025 01:30:00 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1049): Unknown database 'medicore' in C:\xampp\htdocs\patient-management-module\api\patients.php on line 21
