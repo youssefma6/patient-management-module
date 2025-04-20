@@ -2,6 +2,15 @@
     "name": "your-username/patient-management-module",
     "description": "Patient Management Module for MediCore Hospital",
     "require": {
-        "smarty/smarty": "^5.4"
+        
+        "smarty/smarty": "^5.4",
+        "illuminate/database": "^8.83",
+        "illuminate/events": "^8.83"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Controllers\\": "controllers/",
+            "App\\Models\\": "models/"
+        }
     }
 }

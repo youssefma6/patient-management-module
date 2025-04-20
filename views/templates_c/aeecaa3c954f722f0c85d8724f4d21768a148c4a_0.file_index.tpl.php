@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.5, created on 2025-04-20 19:27:55
+  from 'file:index.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.5',
+  'unifunc' => 'content_68052e9b0e6d39_10103275',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'aeecaa3c954f722f0c85d8724f4d21768a148c4a' => 
+    array (
+      0 => 'index.tpl',
+      1 => 1745169974,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_68052e9b0e6d39_10103275 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\patient-management-module\\views\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,19 +42,20 @@
         <aside class="main-sidebar">
             <div class="brand-wrapper">
                 <img src="assets/media/logo.png" alt="MediCore Logo" class="brand-logo">
-                {* <h1 class="brand-name">Healthcare<br>Management System</h1> *}
-            </div>
+                            </div>
             <div class="sidebar">
                 <nav class="mt-4">
                     <ul class="nav nav-pills nav-sidebar flex-column">
                     <li class="nav-item">
-                    <a href="index.php" class="nav-link">
+                    <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
+/" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <span>Dashboard</span>
                    </a>
                 </li>
                         <li class="nav-item">
-                            <a href="patient_listing.php" class="nav-link">
+                            <a href="<?php echo $_smarty_tpl->getValue('base_url');?>
+/patients" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <span>Patient Details</span>
                             </a>
@@ -118,7 +143,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {foreach $patients as $patient}
+                                        <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('patients'), 'patient');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('patient')->value) {
+$foreach0DoElse = false;
+?>
                                         <tr>
                                             <td>
                                                 <div class="patient-info">
@@ -128,20 +158,28 @@
                                             </td>
                                             <td>
                                                 <div class="patient-info">
-                                                    <span class="name-bolder">{$patient.name}</span>
+                                                    <span class="name-bolder"><?php echo $_smarty_tpl->getValue('patient')['name'];?>
+</span>
                                                 </div>
                                             </td>
-                                            <td>{$patient.mobile}</td>
+                                            <td><?php echo $_smarty_tpl->getValue('patient')['mobile'];?>
+</td>
                                             <td>
                                                 <div class="date-info">
-                                                    <div class="date">{$patient.date|date_format:"%d/%m/%Y"}</div>
-                                                    <div class="time">{$patient.date|date_format:"%I:%M%p"}</div>
+                                                    <div class="date"><?php echo $_smarty_tpl->getSmarty()->getModifierCallback('date_format')($_smarty_tpl->getValue('patient')['date'],"%d/%m/%Y");?>
+</div>
+                                                    <div class="time"><?php echo $_smarty_tpl->getSmarty()->getModifierCallback('date_format')($_smarty_tpl->getValue('patient')['date'],"%I:%M%p");?>
+</div>
                                                 </div>
                                             </td>
-                                            <td><span class="name-bolder">{$patient.doctor}</span></td>
-                                            <td>{$patient.department}</td>
+                                            <td><span class="name-bolder"><?php echo $_smarty_tpl->getValue('patient')['doctor'];?>
+</span></td>
+                                            <td><?php echo $_smarty_tpl->getValue('patient')['department'];?>
+</td>
                                         </tr>
-                                        {/foreach}
+                                        <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                                     </tbody>
                                 </table>
                             </div>
@@ -198,7 +236,8 @@
                                         <i class="fas fa-users"></i>
                                     </div>
                                     <div class="stat-content">
-                                        <h2>{$patients|count}</h2>
+                                        <h2><?php echo $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('patients'));?>
+</h2>
                                         <p>Total Patient</p>
                                     </div>
                                 </div>
@@ -231,14 +270,23 @@
                                     <input type="text" placeholder="Search here" class="search-input">
                                 </div>
                                 <div class="doctors-grid row">
-                                    {foreach $doctors as $doctor}
+                                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('doctors'), 'doctor');
+$foreach1DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('doctor')->value) {
+$foreach1DoElse = false;
+?>
                                     <div class="doctor-card">
                                         <img src="https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg"
                                             alt="" class="doctor-avatar">
-                                        <h3>Dr. {$doctor.name}</h3>
-                                        <p>{$doctor.department}</p>
+                                        <h3>Dr. <?php echo $_smarty_tpl->getValue('doctor')['name'];?>
+</h3>
+                                        <p><?php echo $_smarty_tpl->getValue('doctor')['department'];?>
+</p>
                                     </div>
-                                    {/foreach}
+                                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                                 </div>
                             </div>
                         </div>
@@ -248,9 +296,16 @@
         </div>
     </div>
 
-    <script src="assets/adminlte/plugins/jquery/jquery.min.js"></script>
-    <script src="assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/adminlte/dist/js/adminlte.min.js"></script>
+    <?php echo '<script'; ?>
+ src="assets/adminlte/plugins/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="assets/adminlte/dist/js/adminlte.min.js"><?php echo '</script'; ?>
+>
 </body>
 
-</html>
+</html><?php }
+}

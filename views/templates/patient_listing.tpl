@@ -4,30 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MediCore - Patient Listing</title>
-    <link rel="stylesheet" href="assets/adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{$base_url}/assets/adminlte/dist/css/adminlte.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/adminlte/dist/css/custom.css">
+    <link rel="stylesheet" href="{$base_url}/assets/adminlte/dist/css/custom.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <!-- Sidebar (unchanged) -->
+        <!-- Sidebar -->
         <aside class="main-sidebar">
             <div class="brand-wrapper">
-                <img src="assets/media/logo.png" alt="MediCore Logo" class="brand-logo">
+                <img src="{$base_url}/assets/media/logo.png" alt="MediCore Logo" class="brand-logo">
             </div>
             <div class="sidebar">
                 <nav class="mt-4">
                     <ul class="nav nav-pills nav-sidebar flex-column">
                         <li class="nav-item">
-                            <a href="index.php" class="nav-link">
+                            <a href="{$base_url}/" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <span>Dashboard</span>
-                           </a>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="patient_listing.php" class="nav-link active">
+                            <a href="{$base_url}/patients" class="nav-link active">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <span>Patient Details</span>
                             </a>
@@ -203,7 +203,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="editPatientForm" enctype="multipart/form-data">
-                        <input type="hidden" id="editId">
+                        <input type="hidden" id="editId" name="id">
                         <div class="form-group">
                             <label for="editPhoto">Photo (Optional)</label>
                             <div class="photo-upload-container" id="editPhotoDropArea">
@@ -263,11 +263,13 @@
         </div>
     </div>
 
-    <script src="assets/adminlte/plugins/jquery/jquery.min.js"></script>
-    <script src="assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/adminlte/dist/js/adminlte.min.js"></script>
+    <script src="{$base_url}/assets/adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="{$base_url}/assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{$base_url}/assets/adminlte/dist/js/adminlte.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+    const baseUrl = '{$base_url}';
+    const basePath = '{$base_path}';
     {literal}
         $(document).ready(function() {
             loadPatients();
@@ -284,7 +286,7 @@
             function loadPatients(page = 1) {
                 showLoader();
                 $.ajax({
-                    url: 'api/patients.php',
+                    url: baseUrl + '/api/patients/get',
                     type: 'GET',
                     data: { page: page, search: $('#searchInput').val() },
                     success: function(response) {
@@ -300,8 +302,9 @@
                                 tbody.append('<tr><td colspan="7">No patients found.</td></tr>');
                             } else {
                                 patients.forEach(patient => {
+                                    let photoUrl = patient.photo ? (baseUrl + '/' + patient.photo.replace(/^\/+/, '')) : 'https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg';
                                     let row = `<tr>
-                                        <td><img src="${patient.photo || 'https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg'}" alt="Patient Avatar" class="patient-avatar"></td>
+                                        <td><img src="${photoUrl}" alt="Patient Avatar" class="patient-avatar" onerror="this.src='https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg'"></td>
                                         <td><span class="name-bolder">${patient.name}</span></td>
                                         <td>${patient.mobile}</td>
                                         <td><div class="date-info"><div class="date">${new Date(patient.date).toLocaleDateString()}</div><div class="time">${new Date(patient.date).toLocaleTimeString()}</div></div></td>
@@ -326,6 +329,7 @@
                     },
                     error: function(xhr, status, error) {
                         hideLoader();
+                        console.log('Error response:', xhr.responseText);
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
@@ -351,7 +355,7 @@
             const addPhotoInput = document.getElementById('addPhoto');
             const addPhotoDropArea = document.getElementById('addPhotoDropArea');
             addPhotoDropArea.addEventListener('click', function() {
-                addPhotoInput.click(); // Use native click() to avoid jQuery's event loop
+                addPhotoInput.click();
             });
             addPhotoDropArea.addEventListener('dragover', function(e) {
                 e.preventDefault();
@@ -377,7 +381,7 @@
             const editPhotoInput = document.getElementById('editPhoto');
             const editPhotoDropArea = document.getElementById('editPhotoDropArea');
             editPhotoDropArea.addEventListener('click', function() {
-                editPhotoInput.click(); // Use native click() to avoid jQuery's event loop
+                editPhotoInput.click();
             });
             editPhotoDropArea.addEventListener('dragover', function(e) {
                 e.preventDefault();
@@ -406,7 +410,7 @@
                 const formData = new FormData(this);
                 formData.append('action', 'add');
                 $.ajax({
-                    url: 'api/patients.php',
+                    url: baseUrl + '/api/patients/add',
                     type: 'POST',
                     data: formData,
                     processData: false,
@@ -435,6 +439,7 @@
                     },
                     error: function(xhr, status, error) {
                         hideLoader();
+                        console.log('Error response:', xhr.responseText);
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
@@ -449,7 +454,7 @@
                 let id = $(this).data('id');
                 showLoader();
                 $.ajax({
-                    url: 'api/patients.php',
+                    url: baseUrl + '/api/patients/get',
                     type: 'GET',
                     data: { action: 'get', id: id },
                     success: function(patient) {
@@ -457,11 +462,11 @@
                         $('#editId').val(patient.id);
                         $('#editName').val(patient.name);
                         $('#editMobile').val(patient.mobile);
-                        $('#editDate').val(patient.date);
+                        $('#editDate').val(patient.date ? new Date(patient.date).toISOString().slice(0, 16) : '');
                         $('#editDoctor').val(patient.doctor);
                         $('#editDepartment').val(patient.department);
                         if (patient.photo) {
-                            $('#editPhotoPreview').attr('src', patient.photo).show();
+                            $('#editPhotoPreview').attr('src', baseUrl + '/' + patient.photo.replace(/^\/+/, '')).show();
                         } else {
                             $('#editPhotoPreview').hide();
                         }
@@ -469,6 +474,7 @@
                     },
                     error: function(xhr, status, error) {
                         hideLoader();
+                        console.log('Error response:', xhr.responseText);
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
@@ -485,7 +491,7 @@
                 formData.append('action', 'update');
                 formData.append('id', $('#editId').val());
                 $.ajax({
-                    url: 'api/patients.php',
+                    url: baseUrl + '/api/patients/update',
                     type: 'POST',
                     data: formData,
                     processData: false,
@@ -512,6 +518,7 @@
                     },
                     error: function(xhr, status, error) {
                         hideLoader();
+                        console.log('Error response:', xhr.responseText);
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
@@ -536,7 +543,7 @@
                     if (result.isConfirmed) {
                         showLoader();
                         $.ajax({
-                            url: 'api/patients.php',
+                            url: baseUrl + '/api/patients/delete',
                             type: 'POST',
                             data: {
                                 action: 'delete',
@@ -563,6 +570,7 @@
                             },
                             error: function(xhr, status, error) {
                                 hideLoader();
+                                console.log('Error response:', xhr.responseText);
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Error',
